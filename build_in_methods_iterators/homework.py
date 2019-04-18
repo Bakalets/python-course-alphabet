@@ -25,7 +25,11 @@ def task_2_remove_dict_fields(data: DT, redundant_keys: List[str]) -> DT:
        remove_dict_field([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}], 'age')
         >>> [{'name': 'Alex'}, {'name': 'denys'}]
     """
-    pass
+    new_list = []
+    for d in data:
+        del d[redundant_keys]
+        new_list.append(d)
+    return new_list
 
 
 def task_3_find_item_via_value(data: DT, value) -> DT:
@@ -88,7 +92,7 @@ def task_9_sum_characters_positions(text: str) -> int:
         >>> 532
 
     """
-    pass
+    return sum(map(lambda x: ord(x), text))
 
 
 def task_10_generator_of_simple_numbers() -> Generator[int, None, None]:
