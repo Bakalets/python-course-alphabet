@@ -9,14 +9,12 @@ def interger_values():
         yield str(i)
 
 
-# our_gen = interger_values()
-#
-# # print(next(our_gen))
-#
-# for i in range(100):
-#     print(id(our_gen))
-#     step_value = next(our_gen)
-#     print(step_value)
+our_gen = interger_values()
+print(next(our_gen))
+
+for i in range(100):
+     step_value = next(our_gen)
+     print(step_value)
 
 def generators_examples(step=0):
     i = 0
@@ -54,6 +52,6 @@ members = [
 ]
 
 members_gen = (members)
-print(next(members_gen))
+#print(next(members_gen))
 
 print(range(100))
