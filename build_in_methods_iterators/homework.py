@@ -49,9 +49,7 @@ def task_4_min_value_integers(data: List[int]) -> int:
     """
     Find and return minimum value from list
     """
-    if len(data) < 1:
-        return None
-    else:
+    if data:
         return min(data)
 
 
@@ -59,9 +57,7 @@ def task_5_min_value_strings(data: List[Union[str, int]]) -> str:
     """
     Find the longest string
     """
-    if not data:
-        return None
-    else:
+    if data:
         return str(min(data, key=lambda x: len(str(x))))
 
 
