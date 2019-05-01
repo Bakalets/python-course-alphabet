@@ -79,7 +79,7 @@ def task_5_delete_the_last_customer(con) -> None:
         con: psycopg connection
     """
     with con.cursor() as cursor:
-        cursor.execute("DELETE FROM Customers WHERE customerID = (SELECT max(customerID) FROM Customers);")
+        cursor.execute("DELETE FROM Customers WHERE customerID = (SELECT CustomerID FROM Customers ORDER BY CustomerID DESC LIMIT 1);")
         con.commit()
 
 
@@ -157,7 +157,7 @@ def task_11_list_customers_starting_from_11th(cur):
 
     Returns: 11 records
     """
-    cur.execute("SELECT * FROM Customers WHERE CustomerID>11 ORDER BY CustomerID ASC;")
+    cur.execute("SELECT * FROM Customers ORDER BY CustomerID ASC OFFSET 11 ROWS;")
     return cur.fetchall()
 
 
@@ -170,8 +170,10 @@ def task_12_list_suppliers_from_specified_countries(cur):
 
     Returns: 8 records
     """
-    cur.execute("""SELECT supplierid, suppliername, contactname, city, country
-                FROM Suppliers WHERE Country IN ('USA','UK','Japan');""")
+    cur.execute("""
+        SELECT supplierid, suppliername, contactname, city, country
+        FROM Suppliers 
+        WHERE Country IN ('USA','UK','Japan');""")
     return cur.fetchall()
 
 
@@ -202,10 +204,10 @@ def task_14_list_products_with_supplier_information(cur):
     Returns: 77 records
     """
     cur.execute("""
-        SELECT ProductID,ProductName,Unit,Price,City,Country,SupplierName 
+        SELECT ProductID, ProductName, Unit, Price, City, Country, SupplierName 
         FROM Products 
         JOIN Suppliers 
-        ON Products.SupplierID= Suppliers.SupplierID;
+        ON Products.SupplierID = Suppliers.SupplierID;
     """)
     return cur.fetchall()
 
@@ -220,10 +222,10 @@ def task_15_list_customers_with_any_order_or_not(cur):
     Returns: 213 records
     """
     cur.execute("""
-        SELECT CustomerName,ContactName,Country,OrderID 
+        SELECT CustomerName, ContactName, Country, OrderID 
         FROM Customers 
         LEFT JOIN Orders 
-        ON Customers.CustomerID= Orders.CustomerID;
+        ON Customers.CustomerID = Orders.CustomerID;
     """)
     return cur.fetchall()
 
