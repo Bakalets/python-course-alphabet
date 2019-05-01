@@ -79,7 +79,8 @@ def task_5_delete_the_last_customer(con) -> None:
         con: psycopg connection
     """
     with con.cursor() as cursor:
-        cursor.execute("DELETE FROM Customers WHERE customerID = (SELECT CustomerID FROM Customers ORDER BY CustomerID DESC LIMIT 1);")
+        cursor.execute("DELETE FROM Customers WHERE customerID = ("
+                       "SELECT CustomerID FROM Customers ORDER BY CustomerID DESC LIMIT 1);")
         con.commit()
 
 
