@@ -135,7 +135,13 @@ def task_9_count_customers_by_country_with_than_10_customers(cur):
 
     Returns: 3 records
     """
-    cur.execute("""SELECT COUNT(CustomerID), Country FROM Customers GROUP BY Country HAVING COUNT(CustomerID)>10 ORDER BY COUNT(CustomerID) DESC;""")
+    cur.execute("""SELECT COUNT(CustomerID), Country 
+        FROM Customers 
+        GROUP BY Country 
+        HAVING COUNT(CustomerID)>10 
+        ORDER BY COUNT(CustomerID) DESC;
+        """)
+    return cur.fetchall()
 
 
 def task_10_list_first_10_customers(cur):
