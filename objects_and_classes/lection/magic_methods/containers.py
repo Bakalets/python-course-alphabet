@@ -1,11 +1,8 @@
 import random
 from typing import List
 
-<<<<<<< HEAD
-from magic_methods.lifetime import Programmer
-=======
+
 from lection.magic_methods.lifetime import Programmer
->>>>>>> 2c9908d3bb0735a021f5c4588206bf187ae26ff1
 
 
 class ITCompany:
@@ -40,11 +37,8 @@ if __name__ == "__main__":
     positions = ["trainee", "junior", "middle", "senior", "tech lead"]
 
     programmers = []
-<<<<<<< HEAD
-    for _ in range(2):
-=======
+
     for _ in range(5):
->>>>>>> 2c9908d3bb0735a021f5c4588206bf187ae26ff1
         programmer = Programmer(
             name=random.choice(names),
             language=random.choice(languages),
